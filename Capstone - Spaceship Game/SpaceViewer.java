@@ -1,40 +1,23 @@
 
 
-/**
- * Write a description of class SpaceViewer here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class SpaceViewer
-{
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
+import javax.swing.JFrame;
 
-    /**
-     * Default constructor for objects of class SpaceViewer
-     */
+public class SpaceViewer extends JFrame
+{
     public SpaceViewer()
     {
-        // initialise instance variables
-        x = 0;
+        add(new SpaceBoard());
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600,600);
+        setLocationRelativeTo(null);
+        setTitle("SpaceShip Game");
+        setResizable(false);
+        setVisible(true);
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public int sampleMethod(int y)
+    
+    public static void main(String[] args)
     {
-        // put your code here
-        return x+y;
+        new SpaceViewer();
     }
-
 }

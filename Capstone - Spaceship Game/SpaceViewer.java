@@ -1,12 +1,27 @@
 
 
 import javax.swing.JFrame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class SpaceViewer extends JFrame
 {
+    private SpaceBoard space;
+    
+    class FrameWindowListener extends WindowAdapter
+    {
+        public void windowOpened(WindowEvent event)
+        {
+            space.requestFocusInWindow();
+        }
+    }
+    
     public SpaceViewer()
     {
-        add(new SpaceBoard());
+        space = new SpaceBoard();
+        add(space);
+        
+        this.addWindowListener(new FrameWindowListener());
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600,600);

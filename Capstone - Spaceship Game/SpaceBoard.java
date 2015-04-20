@@ -7,55 +7,74 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.JPanel;
+import java.awt.event.KeyListener;
+import javax.swing.JComponent;
 import javax.swing.Timer;
 
 
-public class SpaceBoard extends JPanel implements ActionListener
+public class SpaceBoard extends JComponent implements ActionListener
 {
     private Timer timer;
     private Spaceship ship;
-    
+    private int changeX;
+
     public SpaceBoard()
     {
-        addKeyListener(new TAdapter());
+        addKeyListener(new KeyStrokeListener());
         setFocusable(true);
         setBackground(Color.BLACK);
         setDoubleBuffered(true);
-        
+
         ship = new Spaceship();
-        
+
         timer = new Timer(5,this);
         timer.start();
     }
-    
+
     public void paint(Graphics g)
     {
         super.paint(g);
-        
+
         Graphics2D g2 = (Graphics2D) g;
-        g2.drawImage(ship.getImage(), ship.getX(), 400, this);
-        
+        g2.drawImage(ship.getImage(), ship.getX(), 450, this);
+
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
-    
+
     public void actionPerformed(ActionEvent e)
     {
-        ship.move();
+        ship.move(changeX);
         repaint();
     }
-    
-    private class TAdapter extends KeyAdapter
+
+    public class KeyStrokeListener implements KeyListener
     {
-        public void keyReleased(KeyEvent e)
-        {
-            ship.keyReleased(e);
-        }
-        
         public void keyPressed(KeyEvent e)
         {
-            ship.keyPressed(e);
+            int key = e.getKeyCode();
+
+            if (key == KeyEvent.VK_LEFT)
+            {
+                changeX = -10;           
+            }
+            else if (key == KeyEvent.VK_RIGHT)
+            {
+                changeX = 10;           
+            }
+        } 
+
+        public void keyReleased(KeyEvent e)
+        {
+            int key = e.getKeyCode();
+
+            if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT)
+            {
+                changeX = 0;
+            }
         }
+        
+        public void keyTyped(KeyEvent event) 
+        {}
     }
 }

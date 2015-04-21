@@ -24,7 +24,7 @@ public class SpaceViewer extends JFrame
         this.addWindowListener(new FrameWindowListener());
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600,600);
+        setSize(1200,900);
         setLocationRelativeTo(null);
         setTitle("SpaceShip Game");
         setResizable(false);

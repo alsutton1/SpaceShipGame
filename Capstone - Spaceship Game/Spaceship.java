@@ -1,12 +1,10 @@
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import java.awt.event.KeyEvent;
-
 
 public class Spaceship
 {
-    private String craft = "spaceship.png";
+    private String craft = "spaceshipimage.png";
     private int x;
     private Image image;
 
@@ -14,12 +12,16 @@ public class Spaceship
     {
         ImageIcon ship = new ImageIcon(this.getClass().getResource(craft));
         image = ship.getImage();
-        x = 275;
+        x = 600;
     }
 
     public void move(int changeX)
     {
-        x += changeX;
+        int changed = x + changeX;
+        if (changed > 10 && changed < 1140)
+        {
+            x = changed;
+        }
     }
 
     public int getX()

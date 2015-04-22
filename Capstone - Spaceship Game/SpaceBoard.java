@@ -30,7 +30,7 @@ public class SpaceBoard extends JComponent implements ActionListener
         ship = new Spaceship();
         boss = new BossShip();
         
-        bossMove = 10;
+        bossMove = 5;
 
         timer = new Timer(5,this);
         timer.start();
@@ -42,7 +42,7 @@ public class SpaceBoard extends JComponent implements ActionListener
 
         Graphics2D g2 = (Graphics2D) g;
         g2.drawImage(ship.getImage(), ship.getX(), 800, this);
-        g2.drawImage(boss.getImage(), boss.getX(), 100, this);
+        g2.drawImage(boss.getImage(), boss.getX(), 75, this);
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -51,18 +51,17 @@ public class SpaceBoard extends JComponent implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         ship.move(changeX);
+        if ((boss.getX() + bossMove) >= 1000)
+        {
+            bossMove = -5;
+        }
+        else if ((boss.getX() + bossMove) <= 5)
+        {
+            bossMove = 5;
+        }
+            
+        boss.moveBoss(bossMove);
         repaint();
-        int bossIsMoved = bossMove + bossMove;
-        if (bossIsMoved > 1120)
-        {
-            bossMove = -10;
-            boss.moveBoss(bossMove);
-        }
-        else if (bossIsMoved < 10)
-        {
-            bossMove = 10;
-            boss.moveBoss(bossMove);
-        }
     }
 
     public class KeyStrokeListener implements KeyListener

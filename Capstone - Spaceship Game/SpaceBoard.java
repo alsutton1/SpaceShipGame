@@ -17,8 +17,10 @@ public class SpaceBoard extends JComponent implements ActionListener
     private Timer timer;
     private Spaceship ship;
     private BossShip boss;
+    private SpaceBackground background;
     private int changeX;
     private int bossMove;
+    
 
     public SpaceBoard()
     {
@@ -29,6 +31,7 @@ public class SpaceBoard extends JComponent implements ActionListener
 
         ship = new Spaceship();
         boss = new BossShip();
+        background = new SpaceBackground();
         
         bossMove = 5;
 
@@ -41,6 +44,7 @@ public class SpaceBoard extends JComponent implements ActionListener
         super.paint(g);
 
         Graphics2D g2 = (Graphics2D) g;
+        g2.drawImage(background.getImage(),0,0,this);
         g2.drawImage(ship.getImage(), ship.getX(), 800, this);
         g2.drawImage(boss.getImage(), boss.getX(), 75, this);
 

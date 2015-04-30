@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JComponent;
 import javax.swing.Timer;
-
+import java.util.ArrayList;
 
 public class SpaceBoard extends JComponent implements ActionListener
 {
@@ -18,9 +18,11 @@ public class SpaceBoard extends JComponent implements ActionListener
     private Spaceship ship;
     private BossShip boss;
     private SpaceBackground background;
+    private ArrayList lasers;
+    
     private int changeX;
     private int bossMove;
-    
+    private boolean fired;
 
     public SpaceBoard()
     {
@@ -32,8 +34,10 @@ public class SpaceBoard extends JComponent implements ActionListener
         ship = new Spaceship();
         boss = new BossShip();
         background = new SpaceBackground();
-        
+        lasers = new ArrayList();
+
         bossMove = 5;
+        fired = false;
 
         timer = new Timer(5,this);
         timer.start();
@@ -52,9 +56,15 @@ public class SpaceBoard extends JComponent implements ActionListener
         g.dispose();
     }
 
+    public ArrayList getLasers()
+    {
+        return lasers;
+    }
+
     public void actionPerformed(ActionEvent e)
     {
         ship.move(changeX);
+        
         if ((boss.getX() + bossMove) >= 1000)
         {
             bossMove = -5;
@@ -63,7 +73,13 @@ public class SpaceBoard extends JComponent implements ActionListener
         {
             bossMove = 5;
         }
-            
+        
+        if (fired == true)
+        {
+            ship.fire();
+            fired = false;
+        }
+        
         boss.moveBoss(bossMove);
         repaint();
     }
@@ -82,6 +98,11 @@ public class SpaceBoard extends JComponent implements ActionListener
             {
                 changeX = 10;           
             }
+
+            if (key == KeyEvent.VK_SPACE)
+            {
+                fired = true;
+            }
         } 
 
         public void keyReleased(KeyEvent e)
@@ -93,7 +114,7 @@ public class SpaceBoard extends JComponent implements ActionListener
                 changeX = 0;
             }
         }
-        
+
         public void keyTyped(KeyEvent event) 
         {}
     }

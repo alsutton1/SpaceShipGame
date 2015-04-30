@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=x\ y\ direction
+comment0.target=BossLaser(int,\ int,\ int)
+comment1.params=roomHeight
+comment1.target=void\ moveLaser(int)
+numComments=2

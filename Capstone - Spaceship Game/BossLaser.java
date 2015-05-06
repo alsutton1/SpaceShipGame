@@ -12,13 +12,31 @@ public class BossLaser {
     
     public BossLaser(int x, int y, int direction)
     {
-        ImageIcon ii = new ImageIcon(this.getClass().getResource("player-laser.png"));
+        ImageIcon ii = new ImageIcon(this.getClass().getResource("boss-laser.png"));
         
         image = ii.getImage();
         visible = true;
         this.x = x;
         this.y = y;
         this.direction = direction;
+    }
+    
+    public int checkCollision(int shipX, int shipY)
+    {
+        int collides = 0;
+        for (int i = shipX; i < shipX + 25; i++)
+        {
+            for (int ii = shipY; ii < shipY + 25; ii++)
+            {
+                if (this.x == i && this.y == ii)
+                {
+                    collides = 1;
+                    visible = false;
+                } 
+            }
+        }
+        
+        return collides;
     }
     
     public void moveLaser(int roomHeight)
@@ -42,5 +60,25 @@ public class BossLaser {
         {
             visible = false;
         }
+    }
+    
+    public Image getImage()
+    {
+        return image;
+    }
+
+    public int getX()
+    {
+        return x;
+    }
+
+    public int getY()
+    {
+        return y;
+    }
+
+    public boolean isVisible()
+    {
+        return visible;
     }
 }

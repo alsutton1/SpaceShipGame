@@ -18,26 +18,29 @@ public class SpaceBoard extends JComponent implements ActionListener
     private Spaceship ship;
     private BossShip boss;
     private SpaceBackground background;
-    private ArrayList lasers;
     
     private int changeX;
     private int bossMove;
-    private boolean fired;
+    private int addBossLaser;
+    private int roomHeight;
+    private int playerhealth;
+    private int bosshealth;
 
     public SpaceBoard()
     {
         addKeyListener(new KeyStrokeListener());
         setFocusable(true);
-        setBackground(Color.BLACK);
         setDoubleBuffered(true);
 
         ship = new Spaceship();
         boss = new BossShip();
         background = new SpaceBackground();
-        lasers = new ArrayList();
+        addBossLaser = 0;
+        roomHeight = 900;
+        playerhealth = 3;
+        bosshealth = 100;
 
         bossMove = 5;
-        fired = false;
 
         timer = new Timer(5,this);
         timer.start();
@@ -51,19 +54,35 @@ public class SpaceBoard extends JComponent implements ActionListener
         g2.drawImage(background.getImage(),0,0,this);
         g2.drawImage(ship.getImage(), ship.getX(), 800, this);
         g2.drawImage(boss.getImage(), boss.getX(), 75, this);
+        
+        ArrayList lasers = ship.getLasers();
+        
+        for (int i = 0; i < lasers.size(); i++)
+        {
+            PlayerLaser laser = (PlayerLaser) lasers.get(i);
+            g2.drawImage(laser.getImage(), laser.getX()+12, laser.getY(), this);
+        }
+        
+        ArrayList bossLasers = boss.getLasers();
 
+        for (int i = 0; i < bossLasers.size(); i++)
+        {
+            BossLaser bosslaser = (BossLaser) bossLasers.get(i);
+            g2.drawImage(bosslaser.getImage(), bosslaser.getX()+25, bosslaser.getY(), this);
+        }
+        
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
-    }
-
-    public ArrayList getLasers()
-    {
-        return lasers;
     }
 
     public void actionPerformed(ActionEvent e)
     {
         ship.move(changeX);
+        
+        int shipX = ship.getX();
+        int shipY = 800;
+        int bossX = boss.getX();
+        int bossY = 75;
         
         if ((boss.getX() + bossMove) >= 1000)
         {
@@ -74,13 +93,52 @@ public class SpaceBoard extends JComponent implements ActionListener
             bossMove = 5;
         }
         
-        if (fired == true)
+        ArrayList lasers = ship.getLasers();
+        
+        for (int i = 0; i < lasers.size(); i++)
         {
-            ship.fire();
-            fired = false;
+            PlayerLaser laser = (PlayerLaser) lasers.get(i);
+            if (laser.isVisible())
+            {
+                laser.moveLaser();
+                laser.checkCollision();
+            }
+            else
+            {
+                lasers.remove(i);
+            }
+        }
+        
+        addBossLaser++;
+        
+        if (addBossLaser > 10)
+        {
+            boss.fire();
+            addBossLaser = 0;
+        }
+        
+        ArrayList bossLasers = boss.getLasers();
+        
+        for (int i = 0; i < bossLasers.size(); i++)
+        {
+            BossLaser bosslaser = (BossLaser) bossLasers.get(i);
+            if (bosslaser.isVisible())
+            {
+                bosslaser.moveLaser(roomHeight);
+                int collides = bosslaser.checkCollision(shipX, shipY);
+                if (collides == 1)
+                {
+                    playerhealth--;
+                }
+            }
+            else
+            {
+                bossLasers.remove(i);
+            }
         }
         
         boss.moveBoss(bossMove);
+        
         repaint();
     }
 
@@ -99,9 +157,9 @@ public class SpaceBoard extends JComponent implements ActionListener
                 changeX = 10;           
             }
 
-            if (key == KeyEvent.VK_SPACE)
+            if (key == KeyEvent.VK_UP)
             {
-                fired = true;
+                ship.fire();
             }
         } 
 

@@ -19,6 +19,11 @@ public class PlayerLaser {
         this.y = y;
     }
 
+    public void checkCollision()
+    {
+        int nums = 0;
+    }
+    
     public void moveLaser()
     {
         y += LASER_SPEED;

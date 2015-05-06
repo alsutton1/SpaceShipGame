@@ -1,6 +1,16 @@
 #BlueJ class context
 comment0.params=x\ y\ direction
 comment0.target=BossLaser(int,\ int,\ int)
-comment1.params=roomHeight
-comment1.target=void\ moveLaser(int)
-numComments=2
+comment1.params=shipX\ shipY
+comment1.target=int\ checkCollision(int,\ int)
+comment2.params=roomHeight
+comment2.target=void\ moveLaser(int)
+comment3.params=
+comment3.target=java.awt.Image\ getImage()
+comment4.params=
+comment4.target=int\ getX()
+comment5.params=
+comment5.target=int\ getY()
+comment6.params=
+comment6.target=boolean\ isVisible()
+numComments=7

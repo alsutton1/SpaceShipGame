@@ -18,6 +18,7 @@ public class Spaceship
         lasers = new ArrayList();
     }
 
+    
     public void move(int changeX)
     {
         int changed = x + changeX;
@@ -37,8 +38,13 @@ public class Spaceship
         return image;
     }
     
+    public ArrayList getLasers()
+    {
+        return lasers;
+    }
+    
     public void fire()
     {
-        lasers.add(new PlayerLaser(this.getX(),
+        lasers.add(new PlayerLaser(this.getX(), 800));
     }
 }

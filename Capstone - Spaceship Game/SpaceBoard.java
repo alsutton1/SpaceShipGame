@@ -72,6 +72,8 @@ public class SpaceBoard extends JComponent implements ActionListener
         }
         
         Toolkit.getDefaultToolkit().sync();
+        
+        g2.draw
         g.dispose();
     }
 
@@ -101,7 +103,7 @@ public class SpaceBoard extends JComponent implements ActionListener
             if (laser.isVisible())
             {
                 laser.moveLaser();
-                laser.checkCollision();
+                laser.checkCollision(bossX, bossY);
             }
             else
             {

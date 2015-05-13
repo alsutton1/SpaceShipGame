@@ -19,9 +19,22 @@ public class PlayerLaser {
         this.y = y;
     }
 
-    public void checkCollision()
+    public int checkCollision(int bossX, int bossY)
     {
-        int nums = 0;
+        int collides = 0;
+        for (int i = bossX; i < bossX + 125; i++)
+        {
+            for (int ii = bossY; ii < bossY + 125; ii++)
+            {
+                if (this.x == i && this.y == ii)
+                {
+                    collides = 1;
+                    visible = false;
+                } 
+            }
+        }
+        
+        return collides;
     }
     
     public void moveLaser()

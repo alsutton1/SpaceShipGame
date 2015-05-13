@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=x\ y
 comment0.target=PlayerLaser(int,\ int)
-comment1.params=
-comment1.target=void\ checkCollision()
+comment1.params=bossX\ bossY
+comment1.target=int\ checkCollision(int,\ int)
 comment2.params=
 comment2.target=void\ moveLaser()
 comment3.params=

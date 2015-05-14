@@ -2,6 +2,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class SpaceBoard extends JComponent implements ActionListener
     private int roomHeight;
     private int playerhealth;
     private int bosshealth;
+    private Rectangle bossBar;
 
     public SpaceBoard()
     {
@@ -39,6 +41,7 @@ public class SpaceBoard extends JComponent implements ActionListener
         roomHeight = 900;
         playerhealth = 3;
         bosshealth = 100;
+        bossBar = new Rectangle(0, 0, 12*bosshealth, 10);
 
         bossMove = 5;
 
@@ -72,13 +75,20 @@ public class SpaceBoard extends JComponent implements ActionListener
         }
         
         Toolkit.getDefaultToolkit().sync();
-        
-        g2.draw
         g.dispose();
     }
-
+    
     public void actionPerformed(ActionEvent e)
     {
+        if (playerhealth == 0)
+        {
+            System.out.println("Mission failed!");
+        }
+        
+        if (bosshealth == 0)
+        {
+            System.out.println("Mission success! Boss defeated!");
+        }
         ship.move(changeX);
         
         int shipX = ship.getX();
@@ -141,6 +151,7 @@ public class SpaceBoard extends JComponent implements ActionListener
         
         boss.moveBoss(bossMove);
         
+        bossBar = new Rectangle(0, 0, 12*bosshealth, 10);
         repaint();
     }
 

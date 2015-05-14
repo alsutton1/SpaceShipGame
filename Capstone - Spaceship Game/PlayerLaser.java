@@ -22,9 +22,9 @@ public class PlayerLaser {
     public int checkCollision(int bossX, int bossY)
     {
         int collides = 0;
-        for (int i = bossX; i < bossX + 125; i++)
+        for (int i = bossX; i < bossX + 150; i++)
         {
-            for (int ii = bossY; ii < bossY + 125; ii++)
+            for (int ii = bossY; ii < bossY + 150; ii++)
             {
                 if (this.x == i && this.y == ii)
                 {

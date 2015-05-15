@@ -10,6 +10,10 @@ public class BossLaser {
     
     private final int LASER_SPEED = 3;
     
+    /**
+     * constructs the boss laser based input int values
+     * assigns appropriate values to the private variables
+     */
     public BossLaser(int x, int y, int direction)
     {
         ImageIcon ii = new ImageIcon(this.getClass().getResource("boss-laser.png"));
@@ -21,6 +25,15 @@ public class BossLaser {
         this.direction = direction;
     }
     
+    /**
+     * checks to see if boss laser has collided with the player ship
+     * returns collides - if 0, did not collide with the player ship, if 1, did collide the player
+     * ship
+     * sets visible to false if collides equals 1
+     * 
+     * (incomplete)(compiles, but does not always get the collision right, does not cover the entire
+     * player ship)
+     */
     public int checkCollision(int shipX, int shipY)
     {
         int collides = 0;
@@ -39,6 +52,10 @@ public class BossLaser {
         return collides;
     }
     
+    /**
+     * moves the boss laser based in the passed in direction value
+     * sets visible to false if it reaches the bottom of the JFrame
+     */
     public void moveLaser(int roomHeight)
     {
         if (direction == 0)
@@ -62,21 +79,33 @@ public class BossLaser {
         }
     }
     
+    /**
+     * returns the image
+     */
     public Image getImage()
     {
         return image;
     }
 
+    /**
+     * returns the current X position
+     */
     public int getX()
     {
         return x;
     }
 
+    /**
+     * returns the current Y position
+     */
     public int getY()
     {
         return y;
     }
 
+    /**
+     * returns the boolean visible
+     */
     public boolean isVisible()
     {
         return visible;

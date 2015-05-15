@@ -1,16 +1,23 @@
 #BlueJ class context
 comment0.params=x\ y\ direction
 comment0.target=BossLaser(int,\ int,\ int)
+comment0.text=\r\n\ constructs\ the\ boss\ laser\ based\ input\ int\ values\r\n\ assigns\ appropriate\ values\ to\ the\ private\ variables\r\n
 comment1.params=shipX\ shipY
 comment1.target=int\ checkCollision(int,\ int)
+comment1.text=\r\n\ checks\ to\ see\ if\ boss\ laser\ has\ collided\ with\ the\ player\ ship\r\n\ returns\ collides\ -\ if\ 0,\ did\ not\ collide\ with\ the\ player\ ship,\ if\ 1,\ did\ collide\ the\ player\r\n\ ship\r\n\ sets\ visible\ to\ false\ if\ collides\ equals\ 1\r\n\ \r\n\ (incomplete)(compiles,\ but\ does\ not\ always\ get\ the\ collision\ right,\ does\ not\ cover\ the\ entire\r\n\ player\ ship)\r\n
 comment2.params=roomHeight
 comment2.target=void\ moveLaser(int)
+comment2.text=\r\n\ moves\ the\ boss\ laser\ based\ in\ the\ passed\ in\ direction\ value\r\n\ sets\ visible\ to\ false\ if\ it\ reaches\ the\ bottom\ of\ the\ JFrame\r\n
 comment3.params=
 comment3.target=java.awt.Image\ getImage()
+comment3.text=\r\n\ returns\ the\ image\r\n
 comment4.params=
 comment4.target=int\ getX()
+comment4.text=\r\n\ returns\ the\ current\ X\ position\r\n
 comment5.params=
 comment5.target=int\ getY()
+comment5.text=\r\n\ returns\ the\ current\ Y\ position\r\n
 comment6.params=
 comment6.target=boolean\ isVisible()
+comment6.text=\r\n\ returns\ the\ boolean\ visible\r\n
 numComments=7

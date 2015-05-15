@@ -8,6 +8,9 @@ public class SpaceViewer extends JFrame
 {
     private SpaceBoard space;
     
+    /**
+     * focuses on the window at the start of the program
+     */
     class FrameWindowListener extends WindowAdapter
     {
         public void windowOpened(WindowEvent event)
@@ -16,6 +19,11 @@ public class SpaceViewer extends JFrame
         }
     }
     
+    
+    /**
+     * creates the SpaceBoard()
+     * adds the SpaceBoard() to the JFrame
+     */
     public SpaceViewer()
     {
         space = new SpaceBoard();
@@ -31,6 +39,9 @@ public class SpaceViewer extends JFrame
         setVisible(true);
     }
     
+    /**
+     * starts the program
+     */
     public static void main(String[] args)
     {
         new SpaceViewer();

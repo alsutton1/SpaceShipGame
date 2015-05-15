@@ -1,14 +1,20 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Spaceship()
+comment0.text=\r\n\ constructs\ the\ player\ ship\r\n\ assigns\ appropriate\ values\ to\ the\ private\ variables\r\n
 comment1.params=changeX
 comment1.target=void\ move(int)
+comment1.text=\r\n\ moves\ the\ player\ ship\ based\ on\ the\ input\ int\ changeX\r\n
 comment2.params=
 comment2.target=int\ getX()
+comment2.text=\r\n\ returns\ the\ current\ X\ position\r\n
 comment3.params=
 comment3.target=java.awt.Image\ getImage()
+comment3.text=\r\n\ returns\ the\ image\r\n
 comment4.params=
 comment4.target=java.util.ArrayList\ getLasers()
+comment4.text=\r\n\ returns\ the\ ArrayList\ lasers\r\n
 comment5.params=
 comment5.target=void\ fire()
+comment5.text=\r\n\ when\ called,\ adds\ a\ laser\ to\ the\ ArrayList\ lasers,\ and\ creates\ the\ laser\ in\ the\ SpaceBoard\r\n
 numComments=6

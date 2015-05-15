@@ -28,6 +28,11 @@ public class SpaceBoard extends JComponent implements ActionListener
     private int bosshealth;
     private Rectangle bossBar;
 
+    /**
+     * adds the Key listener and adds all of the objects (Spaceship(), BossShip()) as well as assigning 
+     * appropriate values to the initialized varaibles (bosshealth, playerhealth) and adds the background 
+     * object
+     */
     public SpaceBoard()
     {
         addKeyListener(new KeyStrokeListener());
@@ -49,6 +54,9 @@ public class SpaceBoard extends JComponent implements ActionListener
         timer.start();
     }
 
+    /**
+     * paints the lasers, player ship, and boss ship at the start and whenever they are moved
+     */
     public void paint(Graphics g)
     {
         super.paint(g);
@@ -78,6 +86,14 @@ public class SpaceBoard extends JComponent implements ActionListener
         g.dispose();
     }
     
+    /**
+     * calculates changes to the game regarding the boss moving, the player moving based on keys pressed, 
+     * lasers moving, and if bosshealth and playerhealth have reached 0
+     * also redraws after each calulation run
+     * 
+     * (incomplete)Calculates the boss bar length
+     * (incomplete)Displays a message when player health or boss health reaches 0
+     */
     public void actionPerformed(ActionEvent e)
     {
         if (playerhealth == 0)
@@ -157,6 +173,13 @@ public class SpaceBoard extends JComponent implements ActionListener
 
     public class KeyStrokeListener implements KeyListener
     {
+        /**
+         * changes the following variables or calls the specific method upon specific key presses
+         * 
+         * left arrow - moves player ship left
+         * right arrow - moves player ship right
+         * up arrow - creates the laser from the player ship's current position drawn
+         */
         public void keyPressed(KeyEvent e)
         {
             int key = e.getKeyCode();
@@ -176,6 +199,9 @@ public class SpaceBoard extends JComponent implements ActionListener
             }
         } 
 
+        /**
+         * resets changed variables from pressed keys to 0
+         */
         public void keyReleased(KeyEvent e)
         {
             int key = e.getKeyCode();

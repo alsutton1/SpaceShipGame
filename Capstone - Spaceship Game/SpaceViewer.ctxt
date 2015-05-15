@@ -1,6 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=SpaceViewer()
+comment0.text=\r\n\ creates\ the\ SpaceBoard()\r\n\ adds\ the\ SpaceBoard()\ to\ the\ JFrame\r\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ starts\ the\ program\r\n
 numComments=2

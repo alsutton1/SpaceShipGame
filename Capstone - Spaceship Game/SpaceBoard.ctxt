@@ -1,8 +1,11 @@
 #BlueJ class context
 comment0.params=
 comment0.target=SpaceBoard()
+comment0.text=\r\n\ adds\ the\ Key\ listener\ and\ adds\ all\ of\ the\ objects\ (Spaceship(),\ BossShip())\ as\ well\ as\ assigning\ \r\n\ appropriate\ values\ to\ the\ initialized\ varaibles\ (bosshealth,\ playerhealth)\ and\ adds\ the\ background\ \r\n\ object\r\n
 comment1.params=g
 comment1.target=void\ paint(java.awt.Graphics)
+comment1.text=\r\n\ paints\ the\ lasers,\ player\ ship,\ and\ boss\ ship\ at\ the\ start\ and\ whenever\ they\ are\ moved\r\n
 comment2.params=e
 comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment2.text=\r\n\ calculates\ changes\ to\ the\ game\ regarding\ the\ boss\ moving,\ the\ player\ moving\ based\ on\ keys\ pressed,\ \r\n\ lasers\ moving,\ and\ if\ bosshealth\ and\ playerhealth\ have\ reached\ 0\r\n\ also\ redraws\ after\ each\ calulation\ run\r\n\ \r\n\ (incomplete)Calculates\ the\ boss\ bar\ length\r\n\ (incomplete)Displays\ a\ message\ when\ player\ health\ or\ boss\ health\ reaches\ 0\r\n
 numComments=3

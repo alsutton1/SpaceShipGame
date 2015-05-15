@@ -9,6 +9,10 @@ public class PlayerLaser {
 
     private final int LASER_SPEED = -10;
 
+    /**
+     * creates the player laser image based on the position ints input
+     * assigns specific values to private initialized variables
+     */
     public PlayerLaser(int x, int y)
     {
         ImageIcon ii = new ImageIcon(this.getClass().getResource(laser));
@@ -19,6 +23,13 @@ public class PlayerLaser {
         this.y = y;
     }
 
+    /**
+     * checks to see if the player laser has collided with the boss ship's coordinates
+     * returns a int value of 1 if collided or 0 if not collided
+     * if collided is zero, sets visible to false
+     * 
+     * (buggy)(collision compiles and works, but does not cover the entire ship)
+     */
     public int checkCollision(int bossX, int bossY)
     {
         int collides = 0;
@@ -37,6 +48,9 @@ public class PlayerLaser {
         return collides;
     }
     
+    /**
+     * when called, moves the laser a specific distance if visible == true
+     */
     public void moveLaser()
     {
         y += LASER_SPEED;
@@ -46,21 +60,34 @@ public class PlayerLaser {
         }
     }
 
+    /**
+     * returns the image
+     */
     public Image getImage()
     {
         return image;
     }
 
+    /**
+     * returns the current X position
+     */
     public int getX()
     {
         return x;
     }
 
+    
+    /**
+     * returns the current Y position
+     */
     public int getY()
     {
         return y;
     }
 
+    /**
+     * returns the boolean visible
+     */
     public boolean isVisible()
     {
         return visible;

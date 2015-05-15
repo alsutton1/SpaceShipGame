@@ -10,6 +10,10 @@ public class Spaceship
     private Image image;
     private ArrayList lasers;
 
+    /**
+     * constructs the player ship
+     * assigns appropriate values to the private variables
+     */
     public Spaceship()
     {
         ImageIcon ship = new ImageIcon(this.getClass().getResource(craft));
@@ -18,7 +22,9 @@ public class Spaceship
         lasers = new ArrayList();
     }
 
-    
+    /**
+     * moves the player ship based on the input int changeX
+     */
     public void move(int changeX)
     {
         int changed = x + changeX;
@@ -28,21 +34,33 @@ public class Spaceship
         }
     }
 
+    /**
+     * returns the current X position
+     */
     public int getX()
     {
         return x;
     }
 
+    /**
+     * returns the image
+     */
     public Image getImage()
     {
         return image;
     }
     
+    /**
+     * returns the ArrayList lasers
+     */
     public ArrayList getLasers()
     {
         return lasers;
     }
     
+    /**
+     * when called, adds a laser to the ArrayList lasers, and creates the laser in the SpaceBoard
+     */
     public void fire()
     {
         lasers.add(new PlayerLaser(this.getX(), 800));
